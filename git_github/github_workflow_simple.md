@@ -16,6 +16,8 @@
   13. Delete the new branch
   14. Pull the changes from the remote repository
   15. Delete the repository
+  16. more steps ...
+
 
 Stages: with disk, staging, local and remote entities
   1. initial:
