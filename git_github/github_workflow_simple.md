@@ -6,15 +6,16 @@
   3. Create a new file in the repository
   4. Add the file to the staging area
   5. Commit the file
-  6. Push the file to the remote repository
-  7. Pull the file from the remote repository
-  8. Create a new branch
-  9. Switch to the new branch
-  10. Merge the new branch with the master branch
-  11. Push the new branch to the remote repository
-  12. Delete the new branch
-  13. Pull the changes from the remote repository
-  14. Delete the repository
+  6. use `git pull --rebase` get pull update, and put my change on top of it
+  7. Push the file to the remote repository
+  8. Pull the file from the remote repository
+  9. Create a new branch
+  10. Switch to the new branch
+  11. Merge the new branch with the master branch
+  12. Push the new branch to the remote repository
+  13. Delete the new branch
+  14. Pull the changes from the remote repository
+  15. Delete the repository
 
 * Stages: with disk, staging, local and remote entities
   1. initial:
