@@ -17,6 +17,8 @@
   14. Pull the changes from the remote repository
   15. Delete the repository
   16. more steps ...
+  17. steps 17
+  18. steps 18
 
 
 Stages: with disk, staging, local and remote entities
