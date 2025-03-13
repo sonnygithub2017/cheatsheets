@@ -55,22 +55,22 @@
   12. Update local main: `git pull origin main`
 
 **Table summary**:
-| Stage                 | Command                    | Disk                             | Staging         | Local-git                                | Remote-git                                     |
-| --------------------- | -------------------------- | -------------------------------- | --------------- | ---------------------------------------- | ---------------------------------------------- |
-| Initial               |                            | x                                | x               | x                                        | main init                                      |
-| Clone to local        | `git clone <github-url>`   | main init                        | x               | main init                                | main init                                      |
-| Create branch         | `git checkout -b mybranch` | mybranch init      | x               | *mybranch init<br>main init              | main init                                      |
-| Add/edit file         | (change) `git diff`        | mybranch change                  | x               | *mybranch init                            | main init                                      |
-| Add to stage          | `git add <file>`           | mybranch change                  | mybranch change | mybranch init                            | main init                                      |
-| Commit                | `git commit -m "message"`  | mybranch change                  | x               | mybranch change                          | main init                                      |
-| switch to main        | `git checkout main`        | main init    | x               | *main init<br>mybranch change            | main update                                   |
-| Update main           | `git pull origin main`     | main update                     | x               | *main update<br>mybranch change                             | main update                                   |
-| switch to mybranch    | `git checkout mybranch`    | mybranch change | x               | *mybranch change<br>main update         | main update                                   |
-| Rebase main           | `git rebase main`          | mybranch change                  | x               | *mybranch update-change                 | main update                                   |
-| Push to mybranch      | `git push origin mybranch` | mybranch change                  | x               | *mybranch update-change                 | mybranch update-change<br>main update        |
-| create Pull request   | GitHub: "Pull request"     | mybranch change                  | x               | *mybranch-update-change                 | mybranch-update-change<br>main update        |
-| merge Pull request    | GitHub: "Squash&Merge"     | mybranch change                  | x               | *mybranch-update-change                 | mybranch-update-change<br>main-update-change |
-| delete branch(Github) | GitHub: delete mybranch    | mybranch change                  | x               | *mybranch-update-change                 | main-update-change                            |
-| switch to main        | `git checkout main`        | main-update | x               | *main-update<br>mybranch-update-change | main-update-change                            |
-| Delete branch(local)  | `git branch -D mybranch`   | main-update                     | x               | main-update                             | main-update-change                            |
-| Update local          | `git pull origin main`     | main update-change              | x               | main-update-change                      | main-update-change                            |
+| Stage                 | Command                    | Disk               | Staging         | Local-git                              | Remote-git                                   |
+| --------------------- | -------------------------- | ------------------ | --------------- | -------------------------------------- | -------------------------------------------- |
+| Initial               |                            | x                  | x               | x                                      | main init                                    |
+| Clone to local        | `git clone <github-url>`   | main init          | x               | main init                              | main init                                    |
+| Create branch         | `git checkout -b mybranch` | mybranch init      | x               | *mybranch init<br>main init            | main init                                    |
+| Add/edit file         | (change) `git diff`        | mybranch change    | x               | *mybranch init                         | main init                                    |
+| Add to stage          | `git add <file>`           | mybranch change    | mybranch change | mybranch init                          | main init                                    |
+| Commit                | `git commit -m "message"`  | mybranch change    | x               | mybranch change                        | main init                                    |
+| switch to main        | `git checkout main`        | main init          | x               | *main init<br>mybranch change          | main update                                  |
+| Update main           | `git pull origin main`     | main update        | x               | *main update<br>mybranch change        | main update                                  |
+| switch to mybranch    | `git checkout mybranch`    | mybranch change    | x               | *mybranch change<br>main update        | main update                                  |
+| Rebase main           | `git rebase main`          | mybranch change    | x               | *mybranch update-change                | main update                                  |
+| Push to mybranch      | `git push origin mybranch` | mybranch change    | x               | *mybranch update-change                | mybranch update-change<br>main update        |
+| create Pull request   | GitHub: "Pull request"     | mybranch change    | x               | *mybranch-update-change                | mybranch-update-change<br>main update        |
+| merge Pull request    | GitHub: "Squash&Merge"     | mybranch change    | x               | *mybranch-update-change                | mybranch-update-change<br>main-update-change |
+| delete branch(Github) | GitHub: delete mybranch    | mybranch change    | x               | *mybranch-update-change                | main-update-change                           |
+| switch to main        | `git checkout main`        | main-update        | x               | *main-update<br>mybranch-update-change | main-update-change                           |
+| Delete branch(local)  | `git branch -D mybranch`   | main-update        | x               | main-update                            | main-update-change                           |
+| Update local          | `git pull origin main`     | main update-change | x               | main-update-change                     | main-update-change                           |
