@@ -22,6 +22,7 @@
   5. Add and commit the file:
      - Add the changed file to staging: `git add <file>`
      - Commit the changes to the local repository: `git commit -m "message"`
+     - if you have changes after commit, you can use `git commit --amend` to keep as one commit
      - The local repository now has a new commit based on original main-init.
   6. Get new updates from remote main:
      - Switch to main locally: `git checkout main`
