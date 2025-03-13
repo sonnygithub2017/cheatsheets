@@ -44,15 +44,20 @@
        - Click on "Pull requests" tab
        - click on "New pull request" and select your branch: `mybranch`
        - Send for review. Example: https://github.com/sonnygithub2017/cheatsheets/pull/1
-  9.  GitHub: merge the Pull request
+  9.  If need additional changes after review.
+       - make the changes, and `git add <file>`
+       - `git commit -m "more msg"` : NOT need `--amend` (diff from Gerrit which use --amend to keep the same change-id)
+       - `git push origin mybranch` to push the changes to remote.
+       - The existing Pull request (https://github.com/sonnygithub2017/cheatsheets/pull/1) will be updated automatically to include new changes.
+  10. GitHub: merge the Pull request
        - review the pull request
        - Click "Squash and merge" to squash multiple changes in `mybranch` into one and merge into main.
-  10. Github: Delete branch
+  11. Github: Delete branch
      - Click "Delete branch" to remove `mybranch` from remote.
-  11. Remove `mybranch` locally:
+  12. Remove `mybranch` locally:
       - Switch to main: `git checkout main`
       - Delete `mybranch`: `git branch -D mybranch`
-  12. Update local main: `git pull origin main`
+  13. Update local main: `git pull origin main`
 
 **Table summary**:
 | Stage                 | Command                    | Disk               | Staging         | Local-git                              | Remote-git                                   |
