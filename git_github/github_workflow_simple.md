@@ -4,54 +4,46 @@
   1. Remote-git: GitHub
   2. Local-git: Local repository
   3. Staging: `git add`
-  4. Disk: File system
+  4. Disk: Working directory
 
 **Stages**:
   1. Initial:
      - Only the remote repository has the main branch.
   2. Clone to local: `git clone https://github.com/username/repo.git`
-     - Example: `git clone https://github.com/sonnygithub2017/cheatsheets.git`
-     - The local machine will have Git source code control (.git folder and multiple config files).
+     - Local machine gets Git source control (.git folder and config files).
      - Both disk and local repository have the main branch.
-  3. Create a new branch to avoid messing up the main branch: `git checkout -b wrk`
-     - The local repository now has two branches: main and wrk.
+  3. Create a new branch: `git checkout -b wrk`
+     - Local repository now has two branches: main and wrk.
      - Switches to `wrk` locally.
   4. Modify files on `wrk`: `vi <file>` or use VSCode
-     - Changes are made on disk, but not yet in local-git.
-     - To see changes between disk and local-git: `git diff <file>`
+     - Changes are on disk, not yet in local-git.
+     - To see changes: `git diff <file>`
   5. Add and commit the file:
-     - Add the changed file to staging: `git add <file>`
-     - Commit the changes to the local repository: `git commit -m "message"`
-     - if you have changes after commit, you can use `git commit --amend` to keep as one commit
-     - The local repository now has a new commit based on original main-init.
-  6. Get new updates from remote main:
-     - Switch to main locally: `git checkout main`
-     - Pull updates from remote main: `git pull origin main`
-     - Switch back to `wrk`: `git checkout wrk`
-     - Get new base (updates) from main (wrk's change on top of main-updates): `git rebase main`
-     - If there is a conflict:
-       - Resolve it manually using `vi <conflict-file>` or VSCode.
-       - Mark the conflict as resolved: `git add <resolved-file>`
+     - Add to staging: `git add <file>`
+     - Commit to local repository: `git commit -m "message"`
+     - Amend commit (keep as one commit): `git commit --amend`
+     - Local repository now has a new commit.
+  6. Get updates from remote main:
+     - main get update: `git checkout main` and  `git pull origin main`
+     - wrk branch get new base from main. `git checkout wrk` and `git rebase main`
+     - If conflict:
+       - Resolve manually using `vi <conflict-file>` or VSCode.
+       - Mark as resolved: `git add <resolved-file>`
        - Continue rebase: `git rebase --continue`
-     - Note: `git rebase` creates new commit IDs (hashes) based on new updates.
-       - Temporarily removes original commit from `wrk`.
-       - Applies the latest main commits to `wrk`.
-       - Replays original commit (same contents and message) on top of main commit with new commit IDs.
+     - Note: `git rebase` will do 1) remove wrk commit, 2) apply new main 3) re-apply wrk commit (new commit ID).
   7. Push `wrk` to remote: `git push origin wrk`
-        - The remote repository will have a new branch `wrk`, in addition to main.
-  8.  GitHub: Create a Pull request for review:
-       - Click on "Pull requests" tab
-       - click on "New pull request" and select your branch: `wrk`
-       - Send for review. Example: https://github.com/sonnygithub2017/cheatsheets/pull/1
-  9.  If need additional changes after review.
-       - make the changes, and `git add <file>`
-       - `git commit -m "more msg"` : NOT need `--amend` (diff from Gerrit which use --amend to keep the same change-id)
-       - `git push origin wrk` to push the changes to remote.
-       - The existing Pull request (https://github.com/sonnygithub2017/cheatsheets/pull/1) will be updated automatically to include new changes.
-  10. GitHub: merge the Pull request
-       - review the pull request
-       - Click "Squash and merge" to squash multiple changes in `wrk` into one and merge into main.
-  11. Github: Delete branch
+     - Remote repository now has a new branch `wrk`.
+  8. GitHub: Create a Pull request:
+       - Click "Pull requests" tab
+       - Click "New pull request" and select `wrk`
+       - PR for review: https://github.com/sonnygithub2017/cheatsheets/pull/1
+  9. Additional changes after review:
+       - Make changes, `git add <file>`, then `git commit -m "more msg"`, then `git push origin wrk`
+       - Existing Pull request will be updated.
+  10. GitHub: Merge the Pull request
+       - Review the pull request
+       - Click "Squash and merge" to merge into main.
+  11. GitHub: Delete branch
      - Click "Delete branch" to remove `wrk` from remote.
   12. Remove `wrk` locally:
       - Switch to main: `git checkout main`
@@ -73,9 +65,9 @@
 | Rebase main           | `git rebase main`         | wrk change         | x          | *wrk update-change                | main update                             |
 | Push to wrk           | `git push origin wrk`     | wrk change         | x          | *wrk update-change                | wrk update-change<br>main update        |
 | create Pull request   | GitHub: "Pull request"    | wrk change         | x          | *wrk-update-change                | wrk-update-change<br>main update        |
-| more change (same PR) | git add/commit/push    | wrk change2         | wrk change2   | *wrk-update-change2                | wrk-update-change2<br>main update        |
-| merge Pull request    | GitHub: "Squash&Merge"    | wrk change2         | x          | *wrk-update-change2                | wrk-update-change2<br>main-update-change |
-| delete branch(Github) | GitHub: delete wrk        | wrk change2         | x          | *wrk-update-change2                | main-update-change2                      |
-| switch to main        | `git checkout main`       | main-update        | x          | *main-update<br>wrk-update-change2 | main-update-change2                      |
-| Delete branch(local)  | `git branch -D wrk`       | main-update        | x          | main-update                       | main-update-change2                      |
-| Update local          | `git pull origin main`    | main update-change2 | x          | main-update-change2                | main-update-change2                      |
+| more change (same PR) | git add/commit/push       | wrk change2        | wrk change2| *wrk-update-change2               | wrk-update-change2<br>main update       |
+| merge Pull request    | GitHub: "Squash&Merge"    | wrk change2        | x          | *wrk-update-change2               | wrk-update-change2<br>main-update-change|
+| delete branch(Github) | GitHub: delete wrk        | wrk change2        | x          | *wrk-update-change2               | main-update-change2                     |
+| switch to main        | `git checkout main`       | main-update        | x          | *main-update<br>wrk-update-change2| main-update-change2                     |
+| Delete branch(local)  | `git branch -D wrk`       | main-update        | x          | main-update                       | main-update-change2                     |
+| Update local          | `git pull origin main`    | main update-change2| x          | main-update-change2               | main-update-change2                     |
