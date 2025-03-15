@@ -11,7 +11,7 @@
      - Only the remote repository has the main branch.
   2. Clone to local: `git clone https://github.com/username/repo.git`
      - Local machine gets Git source control (.git folder and config files).
-     - Both disk and local repository will have the main branch.
+     - Both disk and local repository gets the main branch.
   3. Create a new branch: `git checkout -b wrk`
      - Local repository now has two branches: main and wrk.
      - Switches to `wrk` locally.
