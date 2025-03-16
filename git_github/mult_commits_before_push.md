@@ -72,6 +72,8 @@ You have made multiple commits in your local repository and want to push them to
     ```
     Save and close the editor.
 
+    NOTE: if you want to drop a commit, change `pick` to `drop`.
+
   4. Edit the commit message if needed:
     The editor will open again with the combined commit message:
       ```
