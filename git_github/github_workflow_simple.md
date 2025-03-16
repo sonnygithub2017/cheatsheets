@@ -50,6 +50,38 @@
       - Delete `wrk`: `git branch -D wrk`
   13. Update local main: `git pull origin main`
 
+**Flowchart**
+```mermaid
+graph TD;
+    A[**Initial**<br>Only remote-git has main branch];
+
+    B[**Connect to remote**<br>'git clone gerrit-url'<br>Download files; build local git/main branch; associate with remote 'origin/main'];
+
+    wrk["**Create New Branch**<br>'git checkout -b wrk'<br>Switch to wrk"];
+
+    C[**Create/change files**<br>'vi file'<br>Change in working directory, not in local git<br>see diff: 'git diff file'];
+
+    D[**Add to stage**<br>'git add file'<br>Changes in staging area; not in local git];
+    E["**Commit to local-git**<br>'git commit' (first commit) or 'git commit --amend' for next commits"];
+
+    F["**Rebase remote main**<br>'git checkout main' and 'git pull origin main';<br>'git check out wrk' and 'git rebase main';<br>If conflict: 1) manual resolve conflicts, 2) git add resolved-file, 3) git rebase --continue"];
+
+    G["**Push for review**<br>'git push origin wrk'<br>GitHub: will have wrk branch"];
+
+    H["**GitHub: Create Pull Request for review**<br>Click 'Pull requests' tab<br>Click 'New pull request' and select 'wrk'"];
+    I[**GitHub: Merge pull request**<br>Click 'Squash and merge' to merge into main];
+
+    remove_github_wrk["**GitHub: Delete branch**<br>Click 'Delete branch' to remove 'wrk' from remote"];
+
+    remove_local_wrk["**Remove 'wrk' locally**<br>'git checkout main'<br>'git branch -D wrk'"];
+    J[**Sync with remote**<br>'git pull'];
+
+    A --> B --> wrk --> C --> D --> E --> F --> G --> H --> I;
+    I --> remove_github_wrk--> remove_local_wrk --> J;
+    E --more changes--> C
+    H --more changes--> C
+```
+
 **Table summary**:
 | Stage                 | Command                   | Disk               | Staging    | Local-git                         | Remote-git                              |
 | --------------------- | ------------------------- | ------------------ | ---------- | --------------------------------- | --------------------------------------- |
