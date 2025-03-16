@@ -42,6 +42,20 @@ reference: https://www.youtube.com/watch?v=S7XpTAnSDL4&t=1159s
       - This will create a new commit that undoes the changes of the old commit
     - Push changes: `git push origin main`(github) or `git push origin HEAD:refs/for/master`(gerrit)
 
+### Work on some old commit
+  - Situation: Your files have been updated through multiple commits and you want to work on some old commit
+  - Find old commit: `git log`
+  - Option 1: Create a new branch for the old commit(recommended)
+    - `git checkout -b <branch-name> <old-commit-id>`
+    - Have 2 separate branches for old and new commits -- easy to manage
+  - Option 2: directly checkout on old commit:
+    - `git checkout <old-commit-id>`
+    - This puts you in a detached HEAD state - the HEAD is pointing to the old commit.
+    - To return to the latest commit:
+      - use `git reflog` to find the removed (latest) commit-id
+      - `git checkout <commit-id>` - to go back to that commit
+    - Managing detached HEAD states is tricky and need to use `git reflog` to find the removed commit-id
+
 ### git stash
   - remove changes from the working directory or staging and Save them in a stack
   - scenarios: you are in the middle of a change and need to work on some urgent work. you can
