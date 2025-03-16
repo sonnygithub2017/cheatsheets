@@ -1,3 +1,5 @@
+references: https://www.youtube.com/watch?v=HosPml1qkrg&t=254s
+
 ### git fetch:
   * `git fetch origin` -- fetch all branches
   * `git fetch origin main` -- fetch only main branch
