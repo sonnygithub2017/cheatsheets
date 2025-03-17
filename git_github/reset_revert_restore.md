@@ -45,16 +45,16 @@ reference: https://www.youtube.com/watch?v=S7XpTAnSDL4&t=1159s
 ### Work on some old commit
   - Situation: Your files have been updated through multiple commits and you want to work on some old commit
   - Find old commit: `git log`
-  - Option 1: Create a new branch for the old commit(recommended)
+  - Option 1: Create a new branch for the old commit (recommended)
     - `git checkout -b <branch-name> <old-commit-id>`
     - Have 2 separate branches for old and new commits -- easy to manage
-  - Option 2: directly checkout on old commit:
+  - Option 2: Directly checkout on old commit:
     - `git checkout <old-commit-id>`
-    - This puts you in a detached HEAD state - the HEAD is pointing to the old commit.
-    - To return to the latest commit:
-      - use `git reflog` to find the removed (latest) commit-id
-      - `git checkout <commit-id>` - to go back to that commit
-    - Managing detached HEAD states is tricky and need to use `git reflog` to find the removed commit-id
+    - This puts you in a **detached HEAD state** - The HEAD is pointing to a commit, not a branch. Any changes made will NOT be part of any branch.
+    - The changes are available on disk (working directory) and can be accessed by `vi <file>`, but they will be lost if you switch branches.
+    - To correct this:
+      - Switch to the original branch: `git checkout main` -- your changes will be lost
+      - Use option 1: `git checkout -b <branch-name> <old-commit-id>`
 
 ### git stash
   - remove changes from the working directory or staging and Save them in a stack
