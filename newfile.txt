@@ -1,0 +1,1 @@
+this is new file after detached head state
