@@ -1,1 +1,3 @@
-this is new file after detached head state
+line 1
+line 2
+line 3
